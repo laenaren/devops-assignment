@@ -19,3 +19,24 @@ I know that diffentt netrork policies cam protect different pods from access fro
 The asamption in use of EKS as a k8s provider. Mainly because of it's ability for EKS automode wich should take care kubernetes maintennce and reduce team's overload . Also the decire is to be inlined with copamy standarts.
 In rerms of Helm, it is included in the repo but was never tested
 
+** notes
+
+to connect to ECR repo
+```
+aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-west-1.amazonawsom
+```
+from the folder with the dockerfile run:
+
+
+```
+docker build -t my-image:latest .
+docker tag my-image:latest <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-repository:latest
+docker push <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-repository:latest
+```
+
+# connect to the cluster
+ aws ecr get-login-password --region eu-west-1 | kubectl create secret docker-registry ecr-secret --docker-server=162338488681.dkr.ecr.eu-west-1.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password --region eu-west-1) -n default
+
+To create the correct directoty stractue:
+helm create mytomorrow-chart
+
