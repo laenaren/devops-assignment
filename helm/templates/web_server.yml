@@ -1,26 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  name: mytomorrow-web
   labels:
-    app: {{ .Values.labels.app }}
+    app: mytomorrow-web
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 3
   selector:
     matchLabels:
-      app: {{ .Values.labels.app }}
-      role: {{ .Values.labels.role }}
-      tier: {{ .Values.labels.tier }}
+      app: mytomorrow-web
   template:
     metadata:
       labels:
-        app: {{ .Values.labels.app }}
-        role: {{ .Values.labels.role }}
-        tier: {{ .Values.labels.tier }}
+        app: mytomorrow-web
     spec:
       containers:
-      - name: {{ .Values.labels.app }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        ports:
-        - containerPort: 80
+        - name: mytomorrows-web
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
