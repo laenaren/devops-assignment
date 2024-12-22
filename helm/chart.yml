@@ -1,0 +1,6 @@
+apiVersion: v2
+version: 0.1.0
+name: flask_app
+appVersion: "1.0"
+description: A Helm Chart for mytomor assigment rowsdeployment
+type: application

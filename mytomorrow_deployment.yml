@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mytomorrow-web
+  labels:
+    app: mytomorrow-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mytomorrow-web
+      role: mytomorrow-web
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: mytomorrow-web
+        role: mytomorrow-web
+        tier: backend
+    spec:
+      containers:
+      - name: mytomorrows-web
+        image: 162338488681.dkr.ecr.eu-west-1.amazonaws.com/mytomorrows
+        imagePullPolicy: Always
