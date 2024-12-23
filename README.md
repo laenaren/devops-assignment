@@ -5,7 +5,7 @@
 I had COVId in a past 2 weeks therefore I didnt published my answer.
 
 In the real production envirinment and not the exan one I would take a better care of secutiry and monitoring.
-We can use AWS Cognito to manage users' access, AWS Cloudwarch aith AWS Splunk for better log shipping monioring. Also I would use prometeus and fraphans to have insitful dash boards
+We can use AWS Cognito to manage users' access, AWS Cloudwarch aith Splunk for better log shipping monioring. Also I would use prometeus and fraphans to have insitful dash boards
 
 The use of modules in terraform will prevent unessary code reuse. Mainly because other project would be able to access relevant module's main file and create their own resources. Same for creating better IAM policies
 Enabling WAF for the load balancer would also imrove the security aspectt of the access to this load balance.
